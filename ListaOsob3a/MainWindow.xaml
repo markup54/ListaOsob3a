@@ -20,9 +20,11 @@
             Grid.Row="0" 
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            Margin="10"
+            Margin="10,10,10,10"
             ItemsSource="{Binding ListaOsob}"
-            SelectedItem="{Binding WybranaOsoba}">
+            SelectedItem="{Binding WybranaOsoba}"
+            x:Name="listView" SelectionChanged="listView_SelectionChanged"
+            >
             <ListView.View>
                 <GridView>
                     <GridViewColumn
@@ -39,48 +41,57 @@
                         Header="Miasto"/>
                 </GridView>
             </ListView.View>
-            
+
         </ListView>
         <UniformGrid 
             Grid.Row="0" 
             Grid.Column="2"
             Columns="2"
+            x:Name="formularz"
                      >
             <Label 
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Center"
                 Margin="10">imię</Label>
             <TextBox
+                x:Name="imietxt"
                 HorizontalAlignment="Stretch" 
                 VerticalAlignment="Center"
-                Margin="10"></TextBox>
+                Margin="10"
+                Text="{Binding Imie}"></TextBox>
             <Label
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Center"
                 Margin="10">nazwisko</Label>
             <TextBox
+                x:Name="nazwiskotxt"
                 HorizontalAlignment="Stretch" 
                 VerticalAlignment="Center"
-                Margin="10"></TextBox>
+                Margin="10"
+                Text="{Binding Nazwisko}"></TextBox>
             <Label
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Center"
                 Margin="10">wiek</Label>
             <TextBox
+                x:Name="wiektxt"
                 HorizontalAlignment="Stretch" 
                 VerticalAlignment="Center"
-                Margin="10"></TextBox>
+                Margin="10"
+                Text="{Binding Wiek}"></TextBox>
             <Label
                 HorizontalAlignment="Stretch" 
                 VerticalAlignment="Center"
                 Margin="10">miasto</Label>
             <TextBox
+                x:Name="miastotxt"
                 HorizontalAlignment="Stretch" 
                 VerticalAlignment="Center"
-                Margin="10"></TextBox>
+                Margin="10"
+                Text="{Binding Miasto}"></TextBox>
         </UniformGrid>
-        <Button Grid.Column="0" Grid.Row="1" Margin="10">dodaj</Button>
-        <Button Grid.Column="1" Grid.Row="1" Margin="10">modyfikuj</Button>
+        <Button Grid.Column="0" Grid.Row="1" Margin="10" Click="Button_Click_Dodaj">dodaj</Button>
+        <Button Grid.Column="1" Grid.Row="1" Margin="10,0,10,10" Height="20" Click="Button_Click_Modyfikuj" VerticalAlignment="Bottom">modyfikuj</Button>
         <Button Grid.Column="2" Grid.Row="1" Margin="10" Click="Button_Click">usuń</Button>
     </Grid>
 </Window>

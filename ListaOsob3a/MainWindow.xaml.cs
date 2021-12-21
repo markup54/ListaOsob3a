@@ -44,7 +44,56 @@ namespace ListaOsob3a
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Czy na pewno chcesz usunąć " + WybranaOsoba);
+            if (WybranaOsoba != null)
+            {
+                var zgoda = MessageBox.Show("Czy na pewno chcesz usunąć " + WybranaOsoba, "usuwanie", MessageBoxButton.YesNo);
+                if (zgoda == MessageBoxResult.Yes)
+                {
+                    ListaOsob.Remove(WybranaOsoba);
+                }
+            }
+            else
+            {
+                MessageBox.Show("wybierz osobę z listy");
+            }
+        }
+
+        private void Button_Click_Dodaj(object sender, RoutedEventArgs e)
+        {
+            if (imietxt.Text != null && wiektxt.Text != null)//nie działa sprawdzanie formularza
+            {
+                var imie = imietxt.Text;
+                var nazwisko = nazwiskotxt.Text;
+                int wiek;
+                if (!int.TryParse(wiektxt.Text, out wiek))
+                {
+                    wiek = 0;
+                }
+                var miasto = miastotxt.Text;
+                Osoba osoba = new Osoba(imie, nazwisko, wiek, miasto);
+                ListaOsob.Add(osoba);
+            }
+        }
+
+        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Osoba osoba = listView.SelectedItem as Osoba;
+            formularz.DataContext = osoba;
+        }
+
+        private void Button_Click_Modyfikuj(object sender, RoutedEventArgs e)
+        {
+            var imie = imietxt.Text;
+            var nazwisko = nazwiskotxt.Text;
+            int wiek;
+            if(!int.TryParse(wiektxt.Text,out wiek))
+            {
+                wiek = 0;
+            }
+            var miasto = miastotxt.Text;
+            Osoba osoba = new Osoba(imie, nazwisko, wiek, miasto);
+            ListaOsob.Add(osoba);
+            ListaOsob.Remove(WybranaOsoba);
         }
     }
 }
