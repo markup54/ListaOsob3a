@@ -21,6 +21,10 @@ namespace ListaOsob3a
             Miasto = miasto;
         }
 
+        public override string ToString()
+        {
+            return Imie + " "+ Nazwisko;
+        }
         public object Clone()
         {
             return MemberwiseClone();

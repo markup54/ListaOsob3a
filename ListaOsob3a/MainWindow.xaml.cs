@@ -25,6 +25,7 @@ namespace ListaOsob3a
     public partial class MainWindow : Window
     {
         public ObservableCollection<Osoba> ListaOsob { get; set; }
+        public Osoba WybranaOsoba { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -39,6 +40,11 @@ namespace ListaOsob3a
             ListaOsob.Add(new Osoba("Zosia", "Malina", 12, "Zabrze"));
             ListaOsob.Add(new Osoba("Ela", "Czereśnia", 12, "Zabrze"));
             DataContext = this;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Czy na pewno chcesz usunąć " + WybranaOsoba);
         }
     }
 }
